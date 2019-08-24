@@ -1,0 +1,27 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+int singleNumber(vector<int>& n) 
+{ 
+    int ans=0; 
+    for(int i=0;i<32;i++) 
+    { 
+        int cnt=0; 
+        for(int j=0;j<n.size();j++) 
+        { 
+            cnt+=1 &(n[j]>>i); 
+        } 
+        if(cnt%3!=0) 
+        { 
+            ans=ans|(1<<i); 
+        } 
+    } 
+return ans; }
+int main() {
+    //cout<<"Hello World!";
+    vector<int> v={2,2,3,2};
+    cout<<singleNumber(v);
+}
+
+// time complexity o(n)
+// space complexity o(1)
